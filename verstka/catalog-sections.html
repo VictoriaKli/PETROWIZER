@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <title>Петровайзер Софт</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+
+
+
+
+    <link rel="preload" href="./fonts/inter/Inter-Regular.eot" as="font" crossorigin="anonymous">
+    <link rel="preload" href="./fonts/inter/Inter-Regular.eot?#iefix" as="font" crossorigin="anonymous">
+    <link rel="preload" href="./fonts/inter/Inter-Regular.woff" as="font" crossorigin="anonymous">
+    <link rel="preload" href="./fonts/inter/Inter-Regular.ttf" as="font" crossorigin="anonymous">
+
+    <link rel="preload" href="./fonts/inter/Inter-Light.eot" as="font" crossorigin="anonymous">
+    <link rel="preload" href="./fonts/inter/Inter-Light.eot?#iefix" as="font" crossorigin="anonymous">
+    <link rel="preload" href="./fonts/inter/Inter-Light.woff" as="font" crossorigin="anonymous">
+    <link rel="preload" href="./fonts/inter/Inter-Light.ttf" as="font" crossorigin="anonymous">
+
+    <link rel="preload" href="./fonts/inter/Inter-Medium.eot" as="font" crossorigin="anonymous">
+    <link rel="preload" href="./fonts/inter/Inter-Medium.eot?#iefix" as="font" crossorigin="anonymous">
+    <link rel="preload" href="./fonts/inter/Inter-Medium.woff" as="font" crossorigin="anonymous">
+    <link rel="preload" href="./fonts/inter/Inter-Medium.ttf" as="font" crossorigin="anonymous">
+
+    <link rel="preload" href="./fonts/inter/Inter-Bold.eot" as="font" crossorigin="anonymous">
+    <link rel="preload" href="./fonts/inter/Inter-Bold.eot?#iefix" as="font" crossorigin="anonymous">
+    <link rel="preload" href="./fonts/inter/Inter-Bold.woff" as="font" crossorigin="anonymous">
+    <link rel="preload" href="./fonts/inter/Inter-Bold.ttf" as="font" crossorigin="anonymous">
+
+    <link rel="preload" href="./fonts/inter/Inter-SemiBold.eot" as="font" crossorigin="anonymous">
+    <link rel="preload" href="./fonts/inter/Inter-SemiBold.eot?#iefix" as="font" crossorigin="anonymous">
+    <link rel="preload" href="./fonts/inter/Inter-SemiBold.woff" as="font" crossorigin="anonymous">
+    <link rel="preload" href="./fonts/inter/Inter-SemiBold.ttf" as="font" crossorigin="anonymous">
+
+
+    <link rel="apple-touch-icon" sizes="57x57" href="./img/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="./img/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="./img/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="./img/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="./img/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="./img/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="./img/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="./img/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="./img/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="./img/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="./img/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="./img/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+
+    <link rel="stylesheet" href="./css/libs.min.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+
+    <script type="text/javascript" src="./js/libs/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="./js/libs/jquery.transit.js"></script>
+    <script type="text/javascript" src="./js/libs/intersection-observer.js"></script>
+    <script type="text/javascript" src="./js/libs/util.js"></script>
+    <script type="text/javascript" src="./js/libs/device.min.js"></script>
+    <script type="text/javascript" src="./js/libs/cleave.min.js"></script>
+    <script type="text/javascript" src="./js/libs/modal.js"></script>
+    <script type="text/javascript" src="./js/libs/jquery.fancybox.js"></script>
+    <script type="text/javascript" src="./js/libs/jquery.mCustomScrollbar.min.js"></script>
+    <script type="text/javascript" src="./js/libs/jquery.nice-select.min.js"></script>
+    <script type="text/javascript" src="./js/libs/nouislider.min.js"></script>
+    <script type="text/javascript" src="./js/libs/slick.min.js"></script>
+    <script type="text/javascript" src="./js/libs/jquery.bootstrap-touchspin.min.js"></script>
+    <script type="text/javascript" src="./js/script.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+  </head>
+
+
+  <body>
+    <!-- <div class="preloader js-preloader">
+      <div class="preloader-item">
+        <svg
+          class="preloader-main"
+          width="59"
+          height="78"
+          viewBox="0 0 59 78"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M7.29933 37.4338C5.56265 40.7984 4.55465 44.2776 4.55566 48.7953C4.55876 62.5254 15.6847 73.66 29.4191 73.66C43.1523 73.66 54.2825 62.5268 54.2825 48.7944C54.2825 43.3883 52.553 38.3774 49.6159 34.295L32.8497 6.33082C32.1275 5.12627 30.8265 4.38873 29.422 4.3877C28.0175 4.38667 26.7154 5.1223 25.9915 6.32579L8.77921 34.9387C8.75888 34.9725 8.73905 35.0066 8.71973 35.0409L8.71906 35.0421L8.71424 35.0507L8.69288 35.0885C8.67365 35.1224 8.64485 35.1731 8.60833 35.2371C8.53505 35.3653 8.43184 35.5446 8.31319 35.747C8.06514 36.1703 7.78934 36.6266 7.58402 36.9354C7.58397 36.9355 7.58393 36.9356 7.58389 36.9356L7.57908 36.9429L7.57702 36.9459L7.57642 36.9468L7.57627 36.9471L7.57623 36.9471L7.29933 37.4338Z"
+            fill="#393536"
+            stroke="white"
+            stroke-width="8"
+            stroke-linejoin="round"
+          />
+        </svg>
+        <svg class="icon preloader-rotate">
+          <use xlink:href="#preloader-rotate"></use>
+        </svg>
+      </div>
+    </div> -->
+
+    <header class="header js-header">
+        <div class="container">
+          <div class="header__wp">
+            <a href="#" class="header__logo">
+              <img src="./img/logo.svg" alt="" title="">
+            </a>
+            <div class="header__main">
+              <nav class="header__menu">
+                <ul class="header__menu-list">
+                  <li class="header__menu-list-item">
+                    <a href="#" class="header__menu-list-item-link js-menu-link">
+                      О нас
+                      <svg class="icon icon-arrow-black"><use xlink:href="#icon-arrow-black"></use></svg>
+                    </a>
+                  </li>
+                  <li class="header__menu-list-item">
+                    <a href="#" class="header__menu-list-item-link js-menu-link">
+                      Услуги
+                      <svg class="icon icon-arrow-black"><use xlink:href="#icon-arrow-black"></use></svg>
+                    </a>
+                  </li>
+                  <li class="header__menu-list-item">
+                    <a href="#" class="header__menu-list-item-link js-menu-link">
+                      Продукты
+                    </a>
+                  </li>
+                  <li class="header__menu-list-item">
+                    <a href="#" class="header__menu-list-item-link js-menu-link">
+                      Новости
+                    </a>
+                  </li>
+                  <li class="header__menu-list-item">
+                    <a href="#" class="header__menu-list-item-link js-menu-link">
+                      Публикации
+                    </a>
+                  </li>
+                </ul>
+              </nav>
+              <a href="#" class="btn">
+                <img src="./img/svg/like.svg" alt="" title="">
+              </a>
+            </div>
+            <div class="header__actions">
+              <a href="tel:+74822360061" class="header__phone">+7 (4822) 36-00-61</a>
+              <div class="header__select js-select">
+                <div class="select__block js-select-block">
+                    <span class="select__block-value js-select-value">en</span>
+                </div>
+                <ul class="select__list js-select-list">
+                    <li class="select__list-item js-select-item is-active">en</li>
+                    <li class="select__list-item js-select-item">ru</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+    </header>
+    <div class="wrapper">
+  </body>
+
+<div class="content-entry content-entry--secondary">
+    <div class="container">
+        <h1>Каталог</h1>
+    </div>
+</div>
+<section class="sections">
+    <div class="container">
+        <div class="sections__wrapper">
+            <a href="#" class="manufacturer__item manufacturer__item--sections">
+                <div class="manufacturer__item-img" style="background: #018F45;">
+                    <img src="./img/content/mnf-1.png" alt="">
+                </div>
+                <div class="manufacturer__item-content">
+                    <span class="manufacturer__item-name">
+                        Castrol
+                    </span>
+                    <span class="manufacturer__item-count">
+                        5 товаров
+                    </span>
+                </div>
+            </a>
+            <a href="#" class="manufacturer__item manufacturer__item--sections">
+            <div class="manufacturer__item-img" style="background: #005D9E;">
+                <img src="./img/content/mnf-2.png" alt="">
+            </div>
+            <div class="manufacturer__item-content">
+                <span class="manufacturer__item-name">
+                    Mobil
+                </span>
+                <span class="manufacturer__item-count">
+                    5 товаров
+                </span>
+            </div>
+            </a>
+            <a href="#" class="manufacturer__item manufacturer__item--sections">
+                <div class="manufacturer__item-img" style="background: #373737;">
+                    <img src="./img/content/mnf-3.png" alt="">
+                </div>
+                <div class="manufacturer__item-content">
+                    <span class="manufacturer__item-name">
+                        Mersedes
+                    </span>
+                    <span class="manufacturer__item-count">
+                        5 товаров
+                    </span>
+                </div>
+            </a>
+            <a href="#" class="manufacturer__item manufacturer__item--sections">
+                <div class="manufacturer__item-img" style="background: #2093D1;">
+                    <img src="./img/content/mnf-4.png" alt="">
+                </div>
+                <div class="manufacturer__item-content">
+                    <span class="manufacturer__item-name">
+                        Mazda
+                    </span>
+                    <span class="manufacturer__item-count">
+                        5 товаров
+                    </span>
+                </div>
+            </a>
+            <a href="#" class="manufacturer__item manufacturer__item--sections">
+                <div class="manufacturer__item-img" style="background: #C90C10;">
+                    <img src="./img/content/mnf-5.png" alt="">
+                </div>
+                <div class="manufacturer__item-content">
+                    <span class="manufacturer__item-name">
+                        Toyota
+                    </span>
+                    <span class="manufacturer__item-count">
+                        5 товаров
+                    </span>
+                </div>
+            </a>
+            <a href="#" class="manufacturer__item manufacturer__item--sections">
+                <div class="manufacturer__item-img" style="background: #C6C6C6;">
+                    <img src="./img/content/mnf-6.png" alt="">
+                </div>
+                <div class="manufacturer__item-content">
+                    <span class="manufacturer__item-name">
+                        VAG
+                    </span>
+                    <span class="manufacturer__item-count">
+                        5 товаров
+                    </span>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+</div>
+<footer class="footer">
+  <div class="container">
+    <div class="footer__upper">
+      <div class="footer__upper-wrapper">
+        <div class="footer__upper-info">
+          <a href="#" class="footer__upper-info-logo">
+            <img src="./img/svg/footer-logo.svg" alt="">
+          </a>
+          <div class="footer__upper-info-pay">
+            <span class="footer__upper-info-pay-title">
+              Способы оплаты
+            </span>
+            <div class="footer__upper-info-pay-wrapper">
+              <div class="footer__upper-info-pay-item">
+                <img src="./img/svg/logo-visa.svg" alt="">
+              </div>
+              <div class="footer__upper-info-pay-item">
+                <img src="./img/svg/logo-mastercard.svg" alt="">
+              </div>
+              <div class="footer__upper-info-pay-item">
+                <img src="./img/svg/logo-mir.svg" alt="">
+              </div>
+              <div class="footer__upper-info-pay-item">
+                <img src="./img/svg/logo-sbp.svg" alt="">
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <nav class="footer__upper-menu">
+          <ul>
+            <li>
+              <a href="#" class="footer__upper-menu-link">
+                О нас
+              </a>
+            </li>
+            <li>
+              <a href="#" class="footer__upper-menu-link">
+                Доставка и оплата
+              </a>
+            </li>
+            <li>
+              <a href="#" class="footer__upper-menu-link">
+                Условия реализации
+              </a>
+            </li>
+            <li>
+              <a href="#" class="footer__upper-menu-link">
+                Где купить
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <div class="footer__upper-contacts">
+          <div class="footer__upper-contacts-entry">
+            <a href="tel:74997033240" class="footer__upper-contacts-phone">8 (499) 703 32 40</a>
+            <div class="social">
+              <a href="#" class="social__item">
+                <svg class="icon icon-tg">
+                  <use xlink:href="#icon-tg"></use>
+                </svg>
+              </a>
+              <a href="#" class="social__item">
+                <svg class="icon icon-wt">
+                  <use xlink:href="#icon-wt"></use>
+                </svg>
+              </a>
+            </div>
+          </div>
+          <a href="mailto:masla@mustang-oil.ru" class="footer__upper-contacts-mail">
+            masla@mustang-oil.ru
+          </a>
+          <span class="footer__upper-contacts-address">
+            Симферополь, Московское шоссе, 9-й километр, литера Б
+          </span>
+          <a href="#" class="footer__upper-contacts-write button">
+            Написать нам
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <nav class="footer__bottom-menu js-mobile-menu-item">
+        <div class="footer__bottom-menu-title">
+          <a href="#" class="footer__bottom-menu-title-link">
+            Производители
+          </a>
+          <span class="footer__bottom-menu-title-arrow js-mobile-menu-arrow">
+            <svg class="icon icon-dropdown"><use xlink:href="#icon-dropdown"></use></svg>
+          </span>
+        </div>
+        <ul class="footer__bottom-menu-list js-mobile-menu-list">
+          <li>
+            <a href="#" class="footer__bottom-menu-link">
+              Castrol
+            </a>
+          </li>
+          <li>
+            <a href="#" class="footer__bottom-menu-link">
+              Mobil
+            </a>
+          </li>
+          <li>
+            <a href="#" class="footer__bottom-menu-link">
+              Mercedes
+            </a>
+          </li>
+          <li>
+            <a href="#" class="footer__bottom-menu-link">
+              Mazda
+            </a>
+          </li>
+          <li>
+            <a href="#" class="footer__bottom-menu-link">
+              Toyota
+            </a>
+          </li>
+          <li>
+            <a href="#" class="footer__bottom-menu-link">
+              VAG
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <nav class="footer__bottom-menu footer__bottom-menu--large js-mobile-menu-item">
+        <div class="footer__bottom-menu-title">
+          <a href="#" class="footer__bottom-menu-title-link">
+            Марки техники
+          </a>
+          <span class="footer__bottom-menu-title-arrow js-mobile-menu-arrow">
+            <svg class="icon icon-dropdown"><use xlink:href="#icon-dropdown"></use></svg>
+          </span>
+        </div>
+        <ul class="footer__bottom-menu-list js-mobile-menu-list">
+          <li>
+            <a href="#" class="footer__bottom-menu-link">
+              Acura
+            </a>
+          </li>
+          <li>
+            <a href="#" class="footer__bottom-menu-link">
+              Alfa
+            </a>
+          </li>
+          <li>
+            <a href="#" class="footer__bottom-menu-link">
+              Romeo
+            </a>
+          </li>
+          <li>
+            <a href="#" class="footer__bottom-menu-link">
+              Audi
+            </a>
+          </li>
+          <li>
+            <a href="#" class="footer__bottom-menu-link">
+              Bmw
+            </a>
+          </li>
+          <li>
+            <a href="#" class="footer__bottom-menu-link">
+              Cadillac
+            </a>
+          </li>
+          <li>
+            <a href="#" class="footer__bottom-menu-link">
+              Cadillac
+            </a>
+          </li>
+          <li>
+            <a href="#" class="footer__bottom-menu-link">
+              Chrysler Citroen
+            </a>
+          </li>
+          <li>
+            <a href="#" class="footer__bottom-menu-link">
+              Daewoo
+            </a>
+          </li>
+          <li>
+            <a href="#" class="footer__bottom-menu-link">
+              Dodge
+            </a>
+          </li>
+          <li>
+            <a href="#" class="footer__bottom-menu-link">
+              Dodge
+            </a>
+          </li>
+          <li>
+            <a href="#" class="footer__bottom-menu-link">
+              Ford
+            </a>
+          </li>  <li>
+            <a href="#" class="footer__bottom-menu-link">
+              Honda
+            </a>
+          </li>
+          <li>
+            <a href="#" class="footer__bottom-menu-link">
+              Infiniti
+            </a>
+          </li>
+          <li>
+            <a href="#" class="footer__bottom-menu-link">
+              Jaguar
+            </a>
+          </li>
+          <li>
+            <a href="#" class="footer__bottom-menu-link">
+              Jeep
+            </a>
+          </li>
+          <li>
+            <a href="#" class="footer__bottom-menu-link">
+              Kia
+            </a>
+          </li>
+          <li>
+            <a href="#" class="footer__bottom-menu-link">
+              Lada
+            </a>
+          </li>
+          <li>
+            <a href="#" class="footer__bottom-menu-link">
+              Land Rover
+            </a>
+          </li>
+          <li>
+            <a href="#" class="footer__bottom-menu-link">
+              Lexus
+            </a>
+          </li>
+          <li>
+            <a href="#" class="footer__bottom-menu-link">
+              Mazda
+            </a>
+          </li>
+          <li>
+            <a href="#" class="footer__bottom-menu-link">
+              Mercedes-Benz
+            </a>
+          </li>
+          <li>
+            <a href="#" class="footer__bottom-menu-link">
+              Mini
+            </a>
+          </li>
+          <li>
+            <a href="#" class="footer__bottom-menu-link">
+              Mitsubishi
+            </a>
+          </li>
+          <li>
+            <a href="#" class="footer__bottom-menu-link">
+              Nissan
+            </a>
+          </li>
+          <li>
+            <a href="#" class="footer__bottom-menu-link">
+              Opel
+            </a>
+          </li>
+          <li>
+            <a href="#" class="footer__bottom-menu-link">
+              Peugeot
+            </a>
+          </li>
+          <li>
+            <a href="#" class="footer__bottom-menu-link">
+              Renault
+            </a>
+          </li>
+          <li>
+            <a href="#" class="footer__bottom-menu-link">
+              Saab
+            </a>
+          </li>
+          <li>
+            <a href="#" class="footer__bottom-menu-link">
+              Seat
+            </a>
+          </li>
+            <li>
+            <a href="#" class="footer__bottom-menu-link">
+              Smart
+            </a>
+          </li>
+          <li>
+            <a href="#" class="footer__bottom-menu-link">
+              Skoda
+            </a>
+          </li>
+          <li>
+            <a href="#" class="footer__bottom-menu-link">
+              Ssangyong
+            </a>
+          </li>
+          <li>
+            <a href="#" class="footer__bottom-menu-link">
+              Subaru
+            </a>
+          </li>
+          <li>
+            <a href="#" class="footer__bottom-menu-link">
+              Suzuki
+            </a>
+          </li>
+          <li>
+            <a href="#" class="footer__bottom-menu-link">
+              Toyota
+            </a>
+          </li>
+          <li>
+            <a href="#" class="footer__bottom-menu-link">
+              Volvo
+            </a>
+          </li>
+          <li>
+            <a href="#" class="footer__bottom-menu-link">
+              Vw
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+  <div class="footer__info">
+    <div class="container">
+      <span class="footer__info-copy">
+        © 2023 ООО «МУСТАНГ ОЙЛ»
+      </span>
+      <a href="#" class="footer__info-link">
+        Карта сайта
+      </a>
+      <a href="#" class="footer__info-link">
+        Политика конфиденциальности
+      </a>
+    </div>
+  </div>
+</footer>
+
+
+<div class="search-fixed js-search-fixed">
+  <div class="container">
+    <form action="">
+      <div class="search-fixed__wrapper">
+        <svg class="icon icon-search">
+          <use xlink:href="#icon-actions-search"></use>
+        </svg>
+        <input type="text" class="search-fixed__input js-search-input" placeholder="Введите Ваш запрос..">
+        <svg class="icon icon-close-small js-search-clear">
+          <use xlink:href="#icon-close-small"></use>
+        </svg>
+        <button class="search-fixed__send">
+          <svg class="icon icon-search">
+            <use xlink:href="#icon-search"></use>
+          </svg>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+<div class="search js-search-dropdown">
+  <div class="search__results js-search__results">
+    <div class="container">
+      <div class="search__results-wrapper">
+        <div class="product-card product-card--search">
+          <a href="#" class="product-card__img">
+            <img src="./img/content/search-item-1.jpg" alt="">
+          </a>
+          <div class="product-card__content">
+            <a href="#" class="product-card__title">
+              Castrol edge 5w-30 ll
+            </a>
+            <div class="product-card__price is-sale">
+              <span class="product-card__price-current">
+                4 669 ₽
+              </span>
+              <div class="product-card__price-old">
+                <span class="product-card__price-old-value">
+                  5 000 ₽
+                </span>
+                <span class="product-card__price-old-percent">
+                  -10%
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="product-card product-card--search">
+          <a href="#" class="product-card__img">
+            <img src="./img/content/search-item-2.jpg" alt="">
+          </a>
+          <div class="product-card__content">
+            <a href="#" class="product-card__title">
+              Mobil ESP X3 5W-40
+            </a>
+            <div class="product-card__price">
+              <span class="product-card__price-current">
+                4 669 ₽
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="product-card product-card--search">
+          <a href="#" class="product-card__img">
+            <img src="./img/content/search-item-3.jpg" alt="">
+          </a>
+          <div class="product-card__content">
+            <a href="#" class="product-card__title">
+              Castrol edge 5w-30 ll
+            </a>
+            <div class="product-card__price is-sale">
+              <span class="product-card__price-current">
+                4 669 ₽
+              </span>
+              <div class="product-card__price-old">
+                <span class="product-card__price-old-value">
+                  5 000 ₽
+                </span>
+                <span class="product-card__price-old-percent">
+                  -10%
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="product-card product-card--search">
+          <a href="#" class="product-card__img">
+            <img src="./img/content/search-item-4.jpg" alt="">
+          </a>
+          <div class="product-card__content">
+            <a href="#" class="product-card__title">
+              Castrol edge 5w-30 ll
+            </a>
+            <div class="product-card__price is-sale">
+              <span class="product-card__price-current">
+                4 669 ₽
+              </span>
+              <div class="product-card__price-old">
+                <span class="product-card__price-old-value">
+                  5 000 ₽
+                </span>
+                <span class="product-card__price-old-percent">
+                  -10%
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="product-card product-card--search">
+          <a href="#" class="product-card__img">
+            <img src="./img/content/search-item-2.jpg" alt="">
+          </a>
+          <div class="product-card__content">
+            <a href="#" class="product-card__title">
+              Mobil ESP X3 5W-40
+            </a>
+            <div class="product-card__price">
+              <span class="product-card__price-current">
+                4 669 ₽
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="product-card product-card--search">
+          <a href="#" class="product-card__img">
+            <img src="./img/content/search-item-2.jpg" alt="">
+          </a>
+          <div class="product-card__content">
+            <a href="#" class="product-card__title">
+              Mobil ESP X3 5W-40
+            </a>
+            <div class="product-card__price">
+              <span class="product-card__price-current">
+                4 669 ₽
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="search__more-wrapper">
+      <a href="#" class="search__more button">
+        Смотреть все результаты
+      </a>
+    </div>
+  </div>
+</div>
+
+
+<svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <symbol id="icon-arrow-black" viewBox="0 0 32 32">
+      <path d="M14.578 23.467l-10.667-15.289h20.978l-10.311 15.289z"></path>
+    </symbol>
+  </defs>
+</svg>
+
+
+<div class="viewport js-viewport"></div>
+<div class="overlay js-overlay"></div>
+
+</body>
+
+</html>

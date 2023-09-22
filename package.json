@@ -1,0 +1,46 @@
+{
+  "name": "vent-constuction",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "esdxone",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.19.1",
+    "@babel/preset-env": "^7.19.1",
+    "browser-sync": "^2.27.10",
+    "del": "^6.0.0",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^8.0.0",
+    "gulp-babel": "^8.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-cssmin": "^0.2.0",
+    "gulp-file-include": "^2.3.0",
+    "gulp-postcss": "^9.0.1",
+    "gulp-rename": "^2.0.0",
+    "gulp-sass": "^5.1.0",
+    "gulp-serve": "^1.4.0",
+    "gulp-uglify": "^3.0.2",
+    "sass": "^1.54.9",
+    "vinyl-ftp": "^0.6.1"
+  },
+  "presets": [
+    "@babel/preset-env"
+  ],
+  "browserslist": {
+    "production": [
+      "last 12 versions",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 3 chrome version",
+      "last 3 firefox version",
+      "last 3 safari version",
+      "last 3 ie version"
+    ]
+  }
+}
