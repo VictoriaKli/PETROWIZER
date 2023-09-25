@@ -522,5 +522,16 @@ $(document).ready(function () {
     $('.js-select-item').not(this).removeClass('is-active');
     body.removeClass('dropdown-open');
   });
+  $('.js-burger').click(function () {
+    if (!$(this).hasClass('is-active')) {
+      $(this).addClass('is-active');
+      $(this).parents('.js-header').addClass('mobile-open');
+      $(this).parents('.js-header').find('.js-header-mobile').addClass('is-open');
+    } else {
+      $(this).removeClass('is-active');
+      $(this).parents('.js-header').find('.js-header-mobile').removeClass('is-open');
+      $(this).parents('.js-header').removeClass('mobile-open');
+    }
+  });
   $(".js-preloader").addClass("is-hide");
 });
