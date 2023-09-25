@@ -533,5 +533,24 @@ $(document).ready(function () {
       $(this).parents('.js-header').removeClass('mobile-open');
     }
   });
+  var opts = {
+    root: null,
+    rootMargin: '0px',
+    threshold: .1
+  };
+  var observerAnim = new IntersectionObserver(function (entries, observerAnim) {
+    entries.forEach(function (entry) {
+      var item = entry.target;
+
+      if (entry.isIntersecting) {
+        item.classList.add('in-process');
+        observerAnim.unobserve(item);
+      }
+    });
+  }, opts);
+  var animContent = document.querySelectorAll('.js-homescreen');
+  animContent.forEach(function (i) {
+    observerAnim.observe(i);
+  });
   $(".js-preloader").addClass("is-hide");
 });
