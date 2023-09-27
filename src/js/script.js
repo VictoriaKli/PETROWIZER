@@ -196,7 +196,7 @@ $(document).ready(function () {
     dropdownCart();
 
     function fixedHeader() {
-      if ($(window).scrollTop() > header.height() && $(window).width() > 992) {
+      if ($(window).scrollTop() > header.height()) {
         resetHeader();
         body.addClass("is-fixed");
       } else {
