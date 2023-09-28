@@ -1770,6 +1770,7 @@ ul {
           animation-fill-mode: forwards;
   height: 55px;
   background: var(--white);
+  margin-bottom: -95px;
 }
 .is-fixed .header .select__block {
   padding: 15px 0 15px 25px;
