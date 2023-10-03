@@ -185,6 +185,9 @@
               <a href="#" class="btn">
                 <img src="./img/svg/like.svg" alt="" title="">
               </a>
+              <a href="#" class="btn">
+                <img src="./img/svg/ask.svg" alt="" title="">
+              </a>
             </div>
             <div class="header__actions">
               <a href="tel:+74822360061" class="header__phone">
@@ -213,9 +216,14 @@
                   <a href="tel:+74822360061" class="contacts-link">+7 (4822) 36-00-61</a>
                   <a href="mailto:office@pvsoft.ru" class="contacts-link contacts-link--small">office@pvsoft.ru</a>
                 </div>
-                <a href="#" class="btn">
-                  <img src="./img/svg/like.svg" alt="" title="">
-                </a>
+                <div class="header__mobile-contacts-btns">
+                  <a href="#" class="btn">
+                    <img src="./img/svg/like.svg" alt="" title="">
+                  </a>
+                  <a href="#" class="btn">
+                    <img src="./img/svg/ask.svg" alt="" title="">
+                  </a>
+                </div>
               </div>
               <ul class="header__mobile-menu">
                 <li class="header__mobile-menu-item js-header-mob-menu-item">
@@ -344,4 +352,9 @@
         </div>
     </header>
     <div class="wrapper">
-  </body>
+
+      <script>
+        if (window.location.pathname.replace('/','') !== "home.html") {
+          $('body').addClass('secondary-page');
+        }
+      </script>

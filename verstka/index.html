@@ -185,6 +185,9 @@
               <a href="#" class="btn">
                 <img src="./img/svg/like.svg" alt="" title="">
               </a>
+              <a href="#" class="btn">
+                <img src="./img/svg/ask.svg" alt="" title="">
+              </a>
             </div>
             <div class="header__actions">
               <a href="tel:+74822360061" class="header__phone">
@@ -213,9 +216,14 @@
                   <a href="tel:+74822360061" class="contacts-link">+7 (4822) 36-00-61</a>
                   <a href="mailto:office@pvsoft.ru" class="contacts-link contacts-link--small">office@pvsoft.ru</a>
                 </div>
-                <a href="#" class="btn">
-                  <img src="./img/svg/like.svg" alt="" title="">
-                </a>
+                <div class="header__mobile-contacts-btns">
+                  <a href="#" class="btn">
+                    <img src="./img/svg/like.svg" alt="" title="">
+                  </a>
+                  <a href="#" class="btn">
+                    <img src="./img/svg/ask.svg" alt="" title="">
+                  </a>
+                </div>
               </div>
               <ul class="header__mobile-menu">
                 <li class="header__mobile-menu-item js-header-mob-menu-item">
@@ -344,8 +352,12 @@
         </div>
     </header>
     <div class="wrapper">
-  </body>
 
+      <script>
+        if (window.location.pathname.replace('/','') !== "home.html") {
+          $('body').addClass('secondary-page');
+        }
+      </script>
 <div class="content-entry">
   <div class="container">
     <h1>Список страниц</h1>
@@ -358,7 +370,7 @@
         <a href="./home.html">Главная</a>
       </li>
       <li>
-        <a href="./catalog-sections.html">Каталог - список разделов</a>
+        <a href="./products.html">Продукты</a>
       </li>
       <li>
         <a href="./typical.html">Типовая</a>
@@ -621,6 +633,30 @@
     </symbol>
     <symbol id="icon-bg-reg" viewBox="0 0 42 32">
       <path  d="M40.285 31.971h-38.692c-0.804 0-1.461-0.658-1.461-1.461v-28.961c0-0.804 0.658-1.461 1.461-1.461h32.117c0.804 0 1.461 0.658 1.461 1.461v3.434c0 0.804 0.658 1.461 1.461 1.461h3.653c0.804 0 1.461 0.658 1.461 1.461v22.59c0 0.818-0.658 1.476-1.461 1.476zM1.593 0.234c-0.731 0-1.315 0.584-1.315 1.315v28.946c0 0.731 0.584 1.315 1.315 1.315h38.692c0.731 0 1.315-0.584 1.315-1.315v-22.59c0-0.731-0.584-1.315-1.315-1.315h-3.653c-0.891 0-1.607-0.716-1.607-1.607v-3.434c0-0.731-0.584-1.315-1.315-1.315h-32.117z"></path>
+    </symbol>
+    <symbol id="icon-home" viewBox="0 0 32 32">
+      <path d="M11.307 6.187h7.893c3.413 0 6.187 2.773 6.187 6.187v7.893c0 3.413-2.773 6.187-6.187 6.187h-7.893c-3.413 0-6.187-2.773-6.187-6.187v-7.893c0-3.413 2.773-6.187 6.187-6.187zM7.040 2.773c-2.987 0-5.547 2.56-5.547 5.547v16c0 2.987 2.56 5.547 5.547 5.547h16c2.987 0 5.547-2.56 5.547-5.547v-21.547h-21.547z"></path>
+    </symbol>
+    <symbol id="icon-bread-back" viewBox="0 0 32 32">
+      <path d="M5.689 16.356l15.289-10.667v20.978l-15.289-10.311z"></path>
+    </symbol>
+    <symbol id="icon-link-external" viewBox="0 0 37 32">
+      <path d="M34.933 22.933h-25.6v-21.333h2.667v18.667h20.267v-18.667h2.667z"></path>
+      <path d="M12 7.2v-4.267h21.333v4.267h-21.333z"></path>
+      <path d="M34.4 8.533h-23.733v-6.933h24v6.933zM13.333 5.867h18.667v-1.6h-18.667v1.6z"></path>
+      <path d="M27.467 29.6h-25.6v-21.067h2.667v18.4h20.267v-2.133h2.667z"></path>
+      <path d="M4.533 14.133v-4.267h1.6v4.267h-1.6z"></path>
+      <path d="M3.2 8.533h4.267v6.933h-4.267v-6.933z"></path>
+    </symbol>
+    <symbol id="icon-link-inside" viewBox="0 0 34 32">
+        <path d="M28.308 29.785h-27.569v-22.892h2.462v20.431h22.646v-10.831h2.462z"></path>
+        <path d="M3.2 13.292v-5.169h12.8v5.169h-12.8z"></path>
+        <path d="M17.231 14.523h-15.262v-7.631h15.262v7.631zM4.431 12.062h10.338v-2.708h-10.338v2.708z"></path>
+        <path d="M19.544 15.171l12.199-12.515 1.763 1.718-12.199 12.515-1.763-1.718z"></path>
+        <path d="M32 9.846l-0.246-5.908h-5.908v-2.462h8.369l0.246 8.369z"></path>
+    </symbol>
+    <symbol id="icon-link" viewBox="0 0 34 32">
+      <path d="M14.72 18.080c0.48 0.48 0.48 1.28 0 1.76s-1.44 0.48-1.92 0c-2.56-2.4-2.56-6.4 0-8.8l4.8-4.32c2.56-2.4 6.88-2.4 9.44 0s2.56 6.4 0 8.8l-1.92 1.92c0-0.96-0.16-2.080-0.48-3.040l0.64-0.64c1.6-1.44 1.6-3.84 0-5.28s-4.16-1.44-5.6 0l-4.96 4.32c-1.6 1.44-1.6 3.68 0 5.28zM18.56 12.8c0.48-0.48 1.44-0.48 1.92 0 2.56 2.4 2.56 6.4 0 8.8l-4.8 4.32c-2.56 2.4-6.88 2.4-9.44 0s-2.56-6.4 0-8.8l1.92-1.92c0 0.96 0.16 2.080 0.48 3.040l-0.64 0.64c-1.6 1.44-1.6 3.84 0 5.28s4.16 1.44 5.6 0l4.64-4.32c1.6-1.44 1.6-3.84 0-5.28-0.32-0.48-0.32-1.28 0.32-1.76z"></path>
     </symbol>
   </defs>
 </svg>
