@@ -240,6 +240,10 @@ svg{
     @media(max-width: 1199px){
       padding-top: 49px;
     }
+
+    @media(max-width: 991px){
+      padding-top: 58px;
+    }
   }
   .products{
     padding-top: 0;
@@ -344,6 +348,10 @@ svg{
 
 .content-entry{
   padding: 70px 0 60px;
+
+  @media(max-width: 767px){
+    padding: 30px 0;
+  }
 }
 
 .breadcrumbs__list{
