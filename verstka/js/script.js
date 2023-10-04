@@ -10,6 +10,7 @@ $(document).ready(function () {
   var search = $('.js-search-fixed'),
       searchDrop = $('.js-search-dropdown'),
       header = $('.js-header'),
+      title = $('.js-title'),
       headerCatalogDropdown = $('.js-header-catalog'),
       headerBigCatalogDropdown = $('.js-header-catalog-big'),
       cartLink = $(".js-cart-link"),
@@ -193,8 +194,21 @@ $(document).ready(function () {
   }
 
   fixedHeader();
+
+  function fixedTitle() {
+    if ($(window).scrollTop() > 200 + title.height()) {
+      resetHeader();
+      body.addClass("fixed-title");
+    } else {
+      body.removeClass("fixed-title");
+    }
+  }
+
+  fixedTitle();
+  console.log(header.height() + title.height());
   window.addEventListener("scroll", function () {
     fixedHeader();
+    fixedTitle();
   }, {
     passive: true
   });
@@ -251,18 +265,20 @@ $(document).ready(function () {
   ==========================================================================*/
 
 
-  $('.js-homescreen-slider').slick({
+  $('.js-prod-detail').slick({
     slidesToShow: 1,
     arrows: true,
     dots: false,
-    autoplay: true,
+    // autoplay: true,
     autoplaySpeed: 3000,
     speed: 500,
+    fade: true,
+    cssEase: 'linear',
     pauseOnHover: false,
     pauseOnFocus: false,
     appendArrows: $(".js-slider-arrows"),
-    prevArrow: '<button aria-label="Предыдущий слайд" class="slider-arrow slider-prev"><svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#slider-arrow"></use></svg></button>',
-    nextArrow: '<button aria-label="Следующий слайд" class="slider-arrow slider-next"><svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#slider-arrow"></use></svg></button>',
+    prevArrow: '<button aria-label="Предыдущий слайд" class="slider-arrow btn_prev slider-prev"><svg class="icon icon-bread-back"><use xlink:href="#icon-bread-back"></use></svg></button>',
+    nextArrow: '<button aria-label="Следующий слайд" class="slider-arrow btn_next slider-next"><svg class="icon icon-bread-back"><use xlink:href="#icon-bread-back"></use></svg></button>',
     responsive: [{
       breakpoint: 768,
       settings: {
@@ -273,7 +289,36 @@ $(document).ready(function () {
       }
     }]
   });
-  slickControlSlides('.js-homescreen-slider');
+  slickControlSlides('.js-prod-detail');
+  $('.js-prod-desc-slider').slick({
+    slidesToShow: 3,
+    arrows: true,
+    dots: false,
+    // autoplay: true,
+    autoplaySpeed: 3000,
+    speed: 500,
+    pauseOnHover: false,
+    pauseOnFocus: false,
+    appendArrows: $(".js-desc-arrows"),
+    prevArrow: '<button aria-label="Предыдущий слайд" class="slider-arrow btn_prev slider-prev"><svg class="icon icon-bread-back"><use xlink:href="#icon-bread-back"></use></svg></button>',
+    nextArrow: '<button aria-label="Следующий слайд" class="slider-arrow btn_next slider-next"><svg class="icon icon-bread-back"><use xlink:href="#icon-bread-back"></use></svg></button>',
+    responsive: [{
+      breakpoint: 1200,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 1
+      }
+    }, {
+      breakpoint: 768,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: false,
+        dots: true
+      }
+    }]
+  });
+  slickControlSlides('.js-prod-desc-slider');
   /* Главная страница
   ==========================================================================*/
 
@@ -551,6 +596,64 @@ $(document).ready(function () {
   var animContent = document.querySelectorAll('.js-homescreen');
   animContent.forEach(function (i) {
     observerAnim.observe(i);
+  });
+  var optsHome = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.11
+  };
+  var observer = new IntersectionObserver(function (entries, observer) {
+    entries.forEach(function (entry) {
+      var block = entry.target;
+
+      if (entry.isIntersecting) {
+        if (!$('body').hasClass('is-scrolling')) {
+          $('body').addClass('is-scrolling');
+          $('html, body').animate({
+            duration: 1000,
+            // продолжительность анимации
+            easing: "linear",
+            // скорость анимации
+            start: function start() {
+              var id = $(block).data('id');
+              $('.js-prod-nav').removeClass('is-active');
+              $(".js-prod-nav[data-id=".concat(id, "]")).addClass('is-active');
+            },
+            complete: function complete() {
+              // callback
+              $('body').removeClass('is-scrolling');
+            }
+          });
+        }
+
+        console.log(block);
+      }
+    });
+  }, optsHome);
+  var homeContent = document.querySelectorAll('.js-desc-block');
+  homeContent.forEach(function (i) {
+    observer.observe(i);
+  });
+  $('.js-prod-nav').click(function (e) {
+    e.preventDefault();
+
+    if (!$(this).hasClass('is-active')) {
+      $('body').addClass('is-scrolling');
+      $('.js-prod-nav').removeClass('is-active');
+      $(this).addClass('is-active');
+      $('html, body').animate({
+        scrollTop: $(".js-desc-block[data-id=".concat($(this).data('id'), "]")).offset().top - 180
+      }, {
+        duration: 1000,
+        // продолжительность анимации
+        easing: "linear",
+        // скорость анимации
+        complete: function complete() {
+          // callback
+          $('body').removeClass('is-scrolling');
+        }
+      });
+    }
   });
   $(".js-preloader").addClass("is-hide");
 });
