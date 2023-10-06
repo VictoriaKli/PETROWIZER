@@ -593,79 +593,13 @@ $(document).ready(function () {
       }
     });
   }, opts);
+  var prodContent = document.querySelectorAll('.js-prod-desc-section');
+  prodContent.forEach(function (i) {
+    observerAnim.observe(i);
+  });
   var animContent = document.querySelectorAll('.js-homescreen');
   animContent.forEach(function (i) {
     observerAnim.observe(i);
   });
-  var opt = {
-    root: null,
-    rootMargin: '0px',
-    threshold: .1
-  };
-  var observerProd = new IntersectionObserver(function (entries, observerProd) {
-    entries.forEach(function (entr) {
-      var block = entr.target;
-
-      if (entr.isIntersecting) {
-        block.classList.add('in-block');
-        observerProd.unobserve(block);
-      }
-    });
-  }, opt);
-  var prodContent = document.querySelectorAll('.js-prod-desc');
-  prodContent.forEach(function (i) {
-    observerProd.observe(i);
-  }); // var optsHome = {
-  //   root: null,
-  //   rootMargin: '0px',
-  //   threshold: 0.11
-  // };
-  // var observer = new IntersectionObserver(function (entries, observer) {
-  //   entries.forEach(function (entry) {
-  //     var block = entry.target;
-  //     if (entry.isIntersecting) {
-  //       if (!$('body').hasClass('is-scrolling')) {
-  //         $('body').addClass('is-scrolling');
-  //         $('html, body').animate(
-  //         {
-  //           duration: 1000, // продолжительность анимации
-  //           easing: "linear", // скорость анимации
-  //           start: function() {
-  //             let id = $(block).data('id');
-  //             $('.js-prod-nav').removeClass('is-active');
-  //             $(`.js-prod-nav[data-id=${id}]`).addClass('is-active');
-  //           },
-  //           complete: function(){ // callback
-  //             $('body').removeClass('is-scrolling');
-  //           }
-  //         })
-  //       }
-  //       console.log(block);
-  //     }
-  //   });
-  // }, optsHome);
-  // var homeContent = document.querySelectorAll('.js-desc-block');
-  // homeContent.forEach(function (i) {
-  //   observer.observe(i);
-  // });
-  // $('.js-prod-nav').click(function(e) {
-  //   e.preventDefault();
-  //   if (!$(this).hasClass('is-active')) {
-  //     $('body').addClass('is-scrolling');
-  //     $('.js-prod-nav').removeClass('is-active');
-  //     $(this).addClass('is-active');
-  //     $('html, body').animate({
-  //       scrollTop: $(`.js-desc-block[data-id=${$(this).data('id')}]`).offset().top -180
-  //     },
-  //     {
-  //       duration: 1000, // продолжительность анимации
-  //       easing: "linear", // скорость анимации
-  //       complete: function(){ // callback
-  //         $('body').removeClass('is-scrolling');
-  //       }
-  //     })
-  //   }
-  // });
-
   $(".js-preloader").addClass("is-hide");
 });
