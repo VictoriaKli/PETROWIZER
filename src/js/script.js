@@ -338,6 +338,78 @@ $(document).ready(function () {
 
   slickControlSlides('.js-prod-desc-slider');
 
+  $(".js-history-slider").on("init", function (event, slick) {
+    $(".js-history-slider").css("opacity", "1");
+  });
+
+  $(".js-history-slider").slick({
+    dots: false,
+    arrows: true,
+    appendArrows: $(".js-slider-history-arrows"),
+    prevArrow: '<button aria-label="Предыдущий слайд" class="slider-arrow slider-prev js-history-prev"><svg class="icon icon-bread-back"><use xlink:href="#icon-bread-back"></use></svg></button>',
+    nextArrow: '<button aria-label="Следующий слайд" class="slider-arrow slider-next js-history-next"><svg class="icon icon-bread-back"><use xlink:href="#icon-bread-back"></use></svg></button>',
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplaySpeed: 6000,
+	  speed: 2000,
+	  swipe: true,
+	  pauseOnHover: false,
+	  pauseOnFocus: false,
+    asNavFor: ".js-history-slider-nav",
+    responsive: [
+      {
+        breakpoint: 767,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          arrows: false,
+          dots: true,
+        },
+      },
+    ],
+  }).on('setPosition', function () {
+    $(this).find('.slick-slide').height('auto');
+    var slickTrack = $(this).find('.slick-track');
+    var slickTrackHeight = $(slickTrack).height();
+    $(this).find('.slick-slide').css('height', slickTrackHeight + 'px');
+  });
+
+  slickControlSlides(".js-history-slider");
+
+  $(".js-history-slider-nav").on("init", function (event, slick) {
+    $(".js-history-slider-nav").css("opacity", "1");
+  });
+
+  $(".js-history-slider-nav").slick({
+    dots: false,
+    arrows: false,
+    slidesToShow: 8,
+    slidesToScroll: 1,
+    variableWidth: true,
+    speed: 300,
+    focusOnSelect: true,
+    asNavFor: ".js-history-slider",
+    responsive: [
+
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          centerMode: true,
+        },
+      },
+    ],
+  }).on('setPosition', function () {
+    $(this).find('.slick-slide').height('auto');
+    var slickTrack = $(this).find('.slick-track');
+    var slickTrackHeight = $(slickTrack).height();
+    $(this).find('.slick-slide').css('height', slickTrackHeight + 'px');
+  });
+
+
+  slickControlSlides(".js-history-slider-nav");
+
   /* Главная страница
   ==========================================================================*/
 
@@ -640,6 +712,130 @@ $(document).ready(function () {
   animContent.forEach(function (i) {
     observerAnim.observe(i);
   });
+  var options = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 1
+  };
+  var observerDetail = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      var item = entry.target;
+
+
+        console.log(entries)
+        if (entry.isIntersecting) {
+          if (item.classList.contains('product-desc__sidebar')){
+            item.classList.add('is-fixed');
+          }
+          if (item.classList.contains('js-desc-block')) {
+            let id = $(item).data('id');
+            $('.product-title').find('h5').text($(item).find('h3').text());
+            $('.js-prod-nav').removeClass('is-active');
+            $(`.js-prod-nav[data-id='${id}']`).addClass('is-active');
+          }
+        }
+
+    });
+  }, options);
+    const detailSidebar = document.querySelectorAll('.product-desc__sidebar');
+    detailSidebar.forEach(function (i) {
+      observerDetail.observe(i);
+    });
+    const conentBlock = document.querySelectorAll('.js-desc-block');
+    conentBlock.forEach(function (i) {
+      observerDetail.observe(i);
+    });
+
+    class fixedSidebar {
+
+      constructor(fixedSide, container, padding) {
+        this.fixedSide = fixedSide;
+        this.container = container;
+        this.padding = padding
+      }
+
+      setSidebar() {
+        let a = document.querySelector(this.fixedSide), b = null, P = this.padding, container = this.container;
+        window.addEventListener('scroll', Ascroll, false);
+        document.body.addEventListener('scroll', Ascroll, false);
+        function Ascroll() {
+          if ($(window).width() > 1024) {
+            if (b == null) {
+              let Sa = getComputedStyle(a, ''), s = '';
+              for (let i = 0; i < Sa.length; i++) {
+                if (Sa[i].indexOf('overflow') == 0 || Sa[i].indexOf('padding') == 0 || Sa[i].indexOf('border') == 0 || Sa[i].indexOf('outline') == 0 || Sa[i].indexOf('box-shadow') == 0 || Sa[i].indexOf('background') == 0) {
+                  s += Sa[i] + ': ' +Sa.getPropertyValue(Sa[i]) + '; '
+                }
+              }
+              b = document.createElement('div');
+              b.style.cssText = s + ' box-sizing: border-box; width: ' + a.offsetWidth + 'px;';
+              a.insertBefore(b, a.firstChild);
+              let l = a.childNodes.length;
+              for (let i = 1; i < l; i++) {
+                b.appendChild(a.childNodes[1]);
+              }
+              a.style.height = b.getBoundingClientRect().height + 'px';
+              a.style.padding = '0';
+              a.style.border = '0';
+            }
+            let Ra = a.getBoundingClientRect(),
+                R = Math.round(Ra.top + b.getBoundingClientRect().height - document.querySelector(container).getBoundingClientRect().bottom);  // селектор блока, при достижении нижнего края которого нужно открепить прилипающий элемент
+            if ((Ra.top - P) <= 0) {
+              if ((Ra.top - P) <= R) {
+                b.className = 'stop';
+                b.parentElement.classList.remove('is-sticky');
+                b.parentElement.classList.add('is-stopped');
+                b.style.top = - R +'px';
+              } else {
+                b.className = 'sticky';
+                b.parentElement.classList.remove('is-stopped');
+                b.parentElement.classList.add('is-sticky');
+                b.style.top = P + 'px';
+              }
+            } else {
+              b.className = '';
+              b.style.top = '';
+            }
+            window.addEventListener('resize', function() {
+              a.children[0].style.width = getComputedStyle(a, '').width
+            }, false);
+          } else {
+            if (a.classList.contains('is-sticky') || a.classList.contains('sticky')) {
+              a.classList.remove('is-sticky');
+              b.classList.remove('sticky');
+            }
+          }
+        }
+      }
+
+      fixPosition() {
+        let Ra = document.querySelector(this.fixedSide).getBoundingClientRect(),
+            b = document.querySelector(this.fixedSide).querySelector('div'),
+            P = this.padding,
+            R = Math.round(Ra.top + b.getBoundingClientRect().height - document.querySelector(this.container).getBoundingClientRect().bottom);  // селектор блока, при достижении нижнего края которого нужно открепить прилипающий элемент
+        if ((Ra.top - P) <= 0) {
+          if ((Ra.top - P) <= R) {
+            b.className = 'stop';
+            b.parentElement.classList.remove('is-sticky');
+            b.parentElement.classList.add('is-stopped');
+            b.style.top = - R +'px';
+          } else {
+            b.className = 'sticky';
+            b.parentElement.classList.remove('is-stopped');
+            b.parentElement.classList.add('is-sticky');
+            b.style.top = P + 'px';
+          }
+        } else {
+          b.className = '';
+          b.style.top = '';
+        }
+      }
+    }
+
+    if ($(".product-desc__sidebar").length) {
+      let sidebar = new fixedSidebar(".product-desc__sidebar", ".product-desc__info", ($('.js-header').height() + $('.product-title').height() + 70));
+      sidebar.setSidebar();
+    }
 
 
 

@@ -1,5 +1,11 @@
 "use strict";
 
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+
 $(document).ready(function () {
   /* Константы
    ==========================================================================*/
@@ -319,6 +325,66 @@ $(document).ready(function () {
     }]
   });
   slickControlSlides('.js-prod-desc-slider');
+  $(".js-history-slider").on("init", function (event, slick) {
+    $(".js-history-slider").css("opacity", "1");
+  });
+  $(".js-history-slider").slick({
+    dots: false,
+    arrows: true,
+    appendArrows: $(".js-slider-history-arrows"),
+    prevArrow: '<button aria-label="Предыдущий слайд" class="slider-arrow slider-prev js-history-prev"><svg class="icon icon-bread-back"><use xlink:href="#icon-bread-back"></use></svg></button>',
+    nextArrow: '<button aria-label="Следующий слайд" class="slider-arrow slider-next js-history-next"><svg class="icon icon-bread-back"><use xlink:href="#icon-bread-back"></use></svg></button>',
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplaySpeed: 6000,
+    speed: 2000,
+    swipe: true,
+    pauseOnHover: false,
+    pauseOnFocus: false,
+    asNavFor: ".js-history-slider-nav",
+    responsive: [{
+      breakpoint: 767,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: false,
+        dots: true
+      }
+    }]
+  }).on('setPosition', function () {
+    $(this).find('.slick-slide').height('auto');
+    var slickTrack = $(this).find('.slick-track');
+    var slickTrackHeight = $(slickTrack).height();
+    $(this).find('.slick-slide').css('height', slickTrackHeight + 'px');
+  });
+  slickControlSlides(".js-history-slider");
+  $(".js-history-slider-nav").on("init", function (event, slick) {
+    $(".js-history-slider-nav").css("opacity", "1");
+  });
+  $(".js-history-slider-nav").slick({
+    dots: false,
+    arrows: false,
+    slidesToShow: 8,
+    slidesToScroll: 1,
+    variableWidth: true,
+    speed: 300,
+    focusOnSelect: true,
+    asNavFor: ".js-history-slider",
+    responsive: [{
+      breakpoint: 768,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        centerMode: true
+      }
+    }]
+  }).on('setPosition', function () {
+    $(this).find('.slick-slide').height('auto');
+    var slickTrack = $(this).find('.slick-track');
+    var slickTrackHeight = $(slickTrack).height();
+    $(this).find('.slick-slide').css('height', slickTrackHeight + 'px');
+  });
+  slickControlSlides(".js-history-slider-nav");
   /* Главная страница
   ==========================================================================*/
 
@@ -601,5 +667,149 @@ $(document).ready(function () {
   animContent.forEach(function (i) {
     observerAnim.observe(i);
   });
+  var options = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 1
+  };
+  var observerDetail = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      var item = entry.target;
+      console.log(entries);
+
+      if (entry.isIntersecting) {
+        if (item.classList.contains('product-desc__sidebar')) {
+          item.classList.add('is-fixed');
+        }
+
+        if (item.classList.contains('js-desc-block')) {
+          var id = $(item).data('id');
+          $('.product-title').find('h5').text($(item).find('h3').text());
+          $('.js-prod-nav').removeClass('is-active');
+          $(".js-prod-nav[data-id='".concat(id, "']")).addClass('is-active');
+        }
+      }
+    });
+  }, options);
+  var detailSidebar = document.querySelectorAll('.product-desc__sidebar');
+  detailSidebar.forEach(function (i) {
+    observerDetail.observe(i);
+  });
+  var conentBlock = document.querySelectorAll('.js-desc-block');
+  conentBlock.forEach(function (i) {
+    observerDetail.observe(i);
+  });
+
+  var fixedSidebar = /*#__PURE__*/function () {
+    function fixedSidebar(fixedSide, container, padding) {
+      _classCallCheck(this, fixedSidebar);
+
+      this.fixedSide = fixedSide;
+      this.container = container;
+      this.padding = padding;
+    }
+
+    _createClass(fixedSidebar, [{
+      key: "setSidebar",
+      value: function setSidebar() {
+        var a = document.querySelector(this.fixedSide),
+            b = null,
+            P = this.padding,
+            container = this.container;
+        window.addEventListener('scroll', Ascroll, false);
+        document.body.addEventListener('scroll', Ascroll, false);
+
+        function Ascroll() {
+          if ($(window).width() > 1024) {
+            if (b == null) {
+              var Sa = getComputedStyle(a, ''),
+                  s = '';
+
+              for (var _i = 0; _i < Sa.length; _i++) {
+                if (Sa[_i].indexOf('overflow') == 0 || Sa[_i].indexOf('padding') == 0 || Sa[_i].indexOf('border') == 0 || Sa[_i].indexOf('outline') == 0 || Sa[_i].indexOf('box-shadow') == 0 || Sa[_i].indexOf('background') == 0) {
+                  s += Sa[_i] + ': ' + Sa.getPropertyValue(Sa[_i]) + '; ';
+                }
+              }
+
+              b = document.createElement('div');
+              b.style.cssText = s + ' box-sizing: border-box; width: ' + a.offsetWidth + 'px;';
+              a.insertBefore(b, a.firstChild);
+              var l = a.childNodes.length;
+
+              for (var _i2 = 1; _i2 < l; _i2++) {
+                b.appendChild(a.childNodes[1]);
+              }
+
+              a.style.height = b.getBoundingClientRect().height + 'px';
+              a.style.padding = '0';
+              a.style.border = '0';
+            }
+
+            var Ra = a.getBoundingClientRect(),
+                R = Math.round(Ra.top + b.getBoundingClientRect().height - document.querySelector(container).getBoundingClientRect().bottom); // селектор блока, при достижении нижнего края которого нужно открепить прилипающий элемент
+
+            if (Ra.top - P <= 0) {
+              if (Ra.top - P <= R) {
+                b.className = 'stop';
+                b.parentElement.classList.remove('is-sticky');
+                b.parentElement.classList.add('is-stopped');
+                b.style.top = -R + 'px';
+              } else {
+                b.className = 'sticky';
+                b.parentElement.classList.remove('is-stopped');
+                b.parentElement.classList.add('is-sticky');
+                b.style.top = P + 'px';
+              }
+            } else {
+              b.className = '';
+              b.style.top = '';
+            }
+
+            window.addEventListener('resize', function () {
+              a.children[0].style.width = getComputedStyle(a, '').width;
+            }, false);
+          } else {
+            if (a.classList.contains('is-sticky') || a.classList.contains('sticky')) {
+              a.classList.remove('is-sticky');
+              b.classList.remove('sticky');
+            }
+          }
+        }
+      }
+    }, {
+      key: "fixPosition",
+      value: function fixPosition() {
+        var Ra = document.querySelector(this.fixedSide).getBoundingClientRect(),
+            b = document.querySelector(this.fixedSide).querySelector('div'),
+            P = this.padding,
+            R = Math.round(Ra.top + b.getBoundingClientRect().height - document.querySelector(this.container).getBoundingClientRect().bottom); // селектор блока, при достижении нижнего края которого нужно открепить прилипающий элемент
+
+        if (Ra.top - P <= 0) {
+          if (Ra.top - P <= R) {
+            b.className = 'stop';
+            b.parentElement.classList.remove('is-sticky');
+            b.parentElement.classList.add('is-stopped');
+            b.style.top = -R + 'px';
+          } else {
+            b.className = 'sticky';
+            b.parentElement.classList.remove('is-stopped');
+            b.parentElement.classList.add('is-sticky');
+            b.style.top = P + 'px';
+          }
+        } else {
+          b.className = '';
+          b.style.top = '';
+        }
+      }
+    }]);
+
+    return fixedSidebar;
+  }();
+
+  if ($(".product-desc__sidebar").length) {
+    var sidebar = new fixedSidebar(".product-desc__sidebar", ".product-desc__info", $('.js-header').height() + $('.product-title').height() + 70);
+    sidebar.setSidebar();
+  }
+
   $(".js-preloader").addClass("is-hide");
 });

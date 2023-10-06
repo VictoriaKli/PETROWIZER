@@ -1,0 +1,113 @@
+@@include('include/header.html')
+<div class="content-entry">
+    <div class="container">
+        <h1>О компании</h1>
+    </div>
+</div>
+<section class="about-intra">
+    <div class="container">
+        <div class="about-intra__wp content">
+            <div class="about-intra__wp-leftside">
+                <p class="big-text">
+                    «Петровайзер Софт» – независимый российский разработчик и интегратор ИТ-решений для нефтегазовой отрасли.
+                </p>
+            </div>
+            <div class="about-intra__wp-rightside">
+                <p>
+                    У нас есть все необходимое для реализации информационных потребностей Заказчика в области строительства нефтегазовых скважин. Наличие таких компетенций позволяет создавать и поддерживать информационную систему, в которой нет ничего лишнего, где все удобно, где нет потерь времени на поиск информации, и можно решать сложные аналитические задачи.
+                </p>
+                <p class="small-text">
+                    В работе мы применяем индивидуальный подход к каждому Заказчику, учитывая его особенности и потребности. Технологии и практики, которые мы применяем при создании информационных систем, являются самыми современными и инновационными.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="team">
+    <div class="container">
+        <div class="section__heading">
+            <h2 class="section__title">Наша команда</h2>
+        </div>
+        <div class="team__wp content">
+            <div class="team__img">
+                <div class="team__img-text">
+                    Создавая программное обеспечение, мы задействуем целую команду профессионалов.
+                </div>
+                <div class="team__img-wp">
+                    <picture>
+                        <source srcset="./img/content/team-sm.png" media="(max-width: 767px)">
+                        <img src="./img/content/team.png" alt="">
+                    </picture>
+                </div>
+            </div>
+           <blockquote>
+                <p>
+                    Создание проекта, формирование команды, тщательная проработка ТЗ и ТТ, программирование, детальное тестирование и устранение ошибок позволяют нам создавать высококачественный продукт, закрывающий все потребности Заказчика.
+                </p>
+           </blockquote>
+        </div>
+    </div>
+</section>
+<section class="feedback">
+    <div class="container">
+        <div class="feedback__wp">
+            <div class="feedback__wp-leftside">
+                <h2>Связаться с нами</h2>
+                <div class="feedback__wp-img">
+                    <img src="./img/svg/feedback.svg" alt="" title="" loading="lazy">
+                </div>
+            </div>
+            <div class="feedback__wp-form">
+                <form action="">
+                    <div class="field js-material-input is-required">
+                        <input class="field__input js-name" name="name" id="name" autocomplete="off" type="text">
+                        <label class="field__label" for="name">Представьтесь</label>
+                        <span class="field__error-text">Заполнено не корректно</span>
+                    </div>
+                    <div class="field js-material-input is-required">
+                        <input class="field__input js-name" name="company" id="company" autocomplete="off" type="text">
+                        <label class="field__label" for="company">Компания</label>
+                        <span class="field__error-text">Заполнено не корректно</span>
+                    </div>
+                    <div class="field js-material-input is-required">
+                        <input class="field__input" name="mail" id="mail" autocomplete="off"
+                        type="text">
+                        <label class="field__label" for="mail">Электронная почта</label>
+                        <span class="field__error-text">Заполнено не корректно</span>
+                    </div>
+                    <div class="field js-material-input is-error is-required">
+                        <input class="field__input js-phone" name="phone" id="phone" autocomplete="off"
+                        type="text">
+                        <label class="field__label" for="phone">Телефон</label>
+                            <span class="field__error-text">Заполнено не корректно</span>
+                    </div>
+                    <div class="field js-material-input">
+                        <textarea class="field__input field__input--textarea" rows="3" name="" id="coop-text" placeholder="Ваше сообщение" autocomplete="off"></textarea>
+                    </div>
+                    <div class="form__submit">
+                      <div class="form__submit-container">
+                            <div class="captcha">
+                                <div class="js-captcha js-lazy-load js-captcha-lazy" data-captcha="Y">
+                                    <div class="g-recaptcha" data-sitekey="6LegxDgiAAAAAPAZdjoyBtxO2BP9EwQ56WgMXTE_"></div>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn--green">
+                                <div class="btn__text">
+                                    Отправить
+                                </div>
+                            </button>
+                        </div>
+                        <div class="checkbox">
+                        <input type="checkbox" name="politic" class="checkbox__input js-politic js-politic-auto"
+                            id="reg-modal" checked="">
+                        <label for="reg-modal" class="checkbox__label">Нажимая кнопку «Отправить», я даю свое
+                            <a href="/politika-konfidentsialnosti/" target="_blank">согласие на обработку моих персональных
+                            данных</a>, в соответствии с Федеральным законом от 27.07.2006 года №152-ФЗ.</label>
+                        </div>
+                    </div>
+              </form>
+            </div>
+        </div>
+    </div>
+</section>
+@@include('include/footer.html')
