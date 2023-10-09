@@ -348,7 +348,7 @@ $(document).ready(function () {
         slidesToShow: 1,
         slidesToScroll: 1,
         arrows: false,
-        dots: true
+        dots: false
       }
     }]
   }).on('setPosition', function () {
@@ -385,6 +385,70 @@ $(document).ready(function () {
     $(this).find('.slick-slide').css('height', slickTrackHeight + 'px');
   });
   slickControlSlides(".js-history-slider-nav");
+  $(".js-pub-slider").on("init", function (event, slick) {
+    $(".js-pub-slider").css("opacity", "1");
+  });
+  $('.js-pub-slider').slick({
+    slidesToShow: 2,
+    arrows: true,
+    dots: false,
+    // autoplay: true,
+    autoplaySpeed: 3000,
+    speed: 500,
+    pauseOnHover: false,
+    pauseOnFocus: false,
+    appendArrows: $(".js-publication-other-arrows"),
+    prevArrow: '<button aria-label="Предыдущий слайд" class="slider-arrow btn_prev slider-prev"><svg class="icon icon-bread-back"><use xlink:href="#icon-bread-back"></use></svg></button>',
+    nextArrow: '<button aria-label="Следующий слайд" class="slider-arrow btn_next slider-next"><svg class="icon icon-bread-back"><use xlink:href="#icon-bread-back"></use></svg></button>',
+    responsive: [{
+      breakpoint: 1200,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 1
+      }
+    }, {
+      breakpoint: 768,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: false,
+        dots: true
+      }
+    }]
+  });
+  slickControlSlides('.js-pub-slider');
+  $(".js-news-slider").on("init", function (event, slick) {
+    $(".js-news-slider").css("opacity", "1");
+  });
+  $('.js-news-slider').slick({
+    slidesToShow: 2,
+    arrows: true,
+    dots: false,
+    // autoplay: true,
+    autoplaySpeed: 3000,
+    speed: 500,
+    pauseOnHover: false,
+    pauseOnFocus: false,
+    appendArrows: $(".js-news-other-arrows"),
+    prevArrow: '<button aria-label="Предыдущий слайд" class="slider-arrow btn_prev slider-prev"><svg class="icon icon-bread-back"><use xlink:href="#icon-bread-back"></use></svg></button>',
+    nextArrow: '<button aria-label="Следующий слайд" class="slider-arrow btn_next slider-next"><svg class="icon icon-bread-back"><use xlink:href="#icon-bread-back"></use></svg></button>',
+    responsive: [{
+      breakpoint: 1200,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 1
+      }
+    }, {
+      breakpoint: 768,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: false,
+        dots: true
+      }
+    }]
+  });
+  slickControlSlides('.js-news-slider');
   /* Главная страница
   ==========================================================================*/
 
@@ -658,11 +722,11 @@ $(document).ready(function () {
         observerAnim.unobserve(item);
       }
     });
-  }, opts);
-  var prodContent = document.querySelectorAll('.js-prod-desc-section');
-  prodContent.forEach(function (i) {
-    observerAnim.observe(i);
-  });
+  }, opts); // const prodContent = document.querySelectorAll('.js-prod-desc-section');
+  // prodContent.forEach(function (i) {
+  //   observerAnim.observe(i);
+  // });
+
   var animContent = document.querySelectorAll('.js-homescreen');
   animContent.forEach(function (i) {
     observerAnim.observe(i);
@@ -675,7 +739,6 @@ $(document).ready(function () {
   var observerDetail = new IntersectionObserver(function (entries) {
     entries.forEach(function (entry) {
       var item = entry.target;
-      console.log(entries);
 
       if (entry.isIntersecting) {
         if (item.classList.contains('product-desc__sidebar')) {

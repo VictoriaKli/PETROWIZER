@@ -1,0 +1,122 @@
+@@include('include/header.html')
+<div class="content-entry">
+    <div class="container">
+        <h1>Вакансии</h1>
+    </div>
+</div>
+<section class="vacancy-intra">
+    <div class="container">
+        <div class="vacancy-intra__block">
+            <div class="vacancy-intra__block-elem-left">
+                <div class="vacancy-intra__block-elem-left-bg"></div>
+            </div>
+            <div class="vacancy-intra__block-elem-right">
+                <div class="vacancy-intra__block-elem-right-bg"></div>
+            </div>
+            <div class="vacancy-intra__block-elem-top">
+                <div class="vacancy-intra__block-elem-top-bg"></div>
+            </div>
+            <div class="vacancy-intra__block-text">
+                Открытые вакансии смотрите на сайте Работа
+                и Вакансии в России от прямых работодателей
+            </div>
+            <a href="#" class="btn">
+                <div class="btn__text">
+                    Смотреть вакансии
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+<section class="feedback">
+    <div class="container">
+        <div class="feedback__wp">
+            <div class="feedback__wp-leftside">
+                <h2>Отправить резюме</h2>
+                <div class="feedback__wp-img">
+                    <img src="./img/svg/feedback.svg" alt="" title="" loading="lazy">
+                </div>
+            </div>
+            <div class="feedback__wp-form">
+                <form action="">
+                    <div class="field js-material-input is-required">
+                        <input class="field__input js-name" name="cv-name" id="cv-name" autocomplete="off" type="text">
+                        <label class="field__label" for="cv-name">Представьтесь</label>
+                        <span class="field__error-text">Заполнено не корректно</span>
+                    </div>
+                    <div class="field js-material-input is-required">
+                        <input class="field__input" name="cv-mail" id="cv-mail" autocomplete="off"
+                        type="text">
+                        <label class="field__label" for="cv-mail">Электронная почта</label>
+                        <span class="field__error-text">Заполнено не корректно</span>
+                    </div>
+                    <div class="field js-material-input is-error is-required">
+                        <input class="field__input js-phone" name="cv-phone" id="cv-phone" autocomplete="off"
+                        type="text">
+                        <label class="field__label" for="cv-phone">Телефон</label>
+                            <span class="field__error-text">Заполнено не корректно</span>
+                    </div>
+                    <div class="field js-material-input">
+                        <textarea class="field__input field__input--textarea" rows="3" name="" id="coop-text" placeholder="Ваше сообщение" autocomplete="off"></textarea>
+                    </div>
+                    <div class="field field--file">
+                        <input type="file" class="field__input" id="input-fashion-file" name="input-fashion-file" multiple="" hidden="">
+                        <label class="field__file js-drop-area" for="input-fashion-file">
+                            <span class="field__file-title">
+                                <svg class="icon icon-file"><use xlink:href="#icon-file"></use></svg>
+                              Добавить файл (docx, pdf, exls, не более 5 MB)
+                            </span>
+                            <div class="field__progress">
+                              <span style="width: 30%;" class="field__progress-value js-fashion-upload-file-progress"></span>
+                            </div>
+                        </label>
+                        <div class="field__files js-fashion-images">
+                          <div class="field__files-item">
+                            <span class="field__files-item-title">
+                                foto.jpg (121 Kb)
+                            </span>
+                            <span class="field__files-item-delete js-fashion-upload-del">
+                              <svg class="icon icon-clear-cart">
+                                <use xlink:href="#icon-clear-cart"></use>
+                              </svg>
+                            </span>
+                          </div>
+                          <div class="field__files-item">
+                            <span class="field__files-item-title">
+                                фото2.jpg (1,8 Mb)
+                            </span>
+                            <span class="field__files-item-delete js-fashion-upload-del">
+                              <svg class="icon icon-clear-cart">
+                                <use xlink:href="#icon-clear-cart"></use>
+                              </svg>
+                            </span>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="form__submit">
+                      <div class="form__submit-container">
+                            <div class="captcha">
+                                <div class="js-captcha js-lazy-load js-captcha-lazy" data-captcha="Y">
+                                    <div class="g-recaptcha" data-sitekey="6LegxDgiAAAAAPAZdjoyBtxO2BP9EwQ56WgMXTE_"></div>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn--green">
+                                <div class="btn__text">
+                                    Отправить
+                                </div>
+                            </button>
+                        </div>
+                        <div class="checkbox">
+                        <input type="checkbox" name="politic" class="checkbox__input js-politic js-politic-auto"
+                            id="reg-modal" checked="">
+                        <label for="reg-modal" class="checkbox__label">Нажимая кнопку «Отправить», я даю свое
+                            <a href="/politika-konfidentsialnosti/" target="_blank">согласие на обработку моих персональных
+                            данных</a>, в соответствии с Федеральным законом от 27.07.2006 года №152-ФЗ.</label>
+                        </div>
+                    </div>
+              </form>
+            </div>
+        </div>
+    </div>
+</section>
+@@include('include/footer.html')
