@@ -1,0 +1,328 @@
+@@include('include/header.html')
+<div class="content-entry">
+    <div class="container">
+        <h1>Контакты</h1>
+    </div>
+</div>
+<section class="contacts">
+    <div class="container">
+        <div class="contacts__list">
+            <div class="contacts__list-item">
+                <div class="contacts__list-item-title">Город</div>
+                <div class="contacts__list-item-text">Тверь</div>
+            </div>
+            <div class="contacts__list-item">
+                <div class="contacts__list-item-title">Адрес</div>
+                <div class="contacts__list-item-text">ул. Макарова, д. 4, корп. 2</div>
+            </div>
+            <div class="contacts__list-item">
+                <div class="contacts__list-item-title">Телефон</div>
+                <a href="tel:+74822360061" class="contacts__list-item-text">+7 (4822) 36-00-61</a>
+            </div>
+            <div class="contacts__list-item">
+                <div class="contacts__list-item-title">Электронная почта</div>
+                <a href="mailto:office@pvsoft.ru" class="contacts__list-item-text">office@pvsoft.ru</a>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="map" id="contacts-map"></section>
+<section class="feedback">
+    <div class="container">
+        <div class="feedback__wp">
+            <div class="feedback__wp-leftside">
+                <h2>Связаться с нами</h2>
+                <div class="feedback__wp-img">
+                    <img src="./img/svg/feedback.svg" alt="" title="" loading="lazy">
+                </div>
+            </div>
+            <div class="feedback__wp-form">
+                <form action="">
+                    <div class="field js-material-input is-required">
+                        <input class="field__input js-name" name="contacts-name" id="contacts-name" autocomplete="off" type="text">
+                        <label class="field__label" for="contacts-name">Представьтесь</label>
+                        <span class="field__error-text">Заполнено не корректно</span>
+                    </div>
+                    <div class="field js-material-input is-required">
+                        <input class="field__input js-name" name="contacts-company" id="contacts-company" autocomplete="off" type="text">
+                        <label class="field__label" for="contacts-company">Компания</label>
+                        <span class="field__error-text">Заполнено не корректно</span>
+                    </div>
+                    <div class="field js-material-input is-required">
+                        <input class="field__input" name="contacts-mail" id="contacts-mail" autocomplete="off"
+                        type="text">
+                        <label class="field__label" for="contacts-mail">Электронная почта</label>
+                        <span class="field__error-text">Заполнено не корректно</span>
+                    </div>
+                    <div class="field js-material-input is-error is-required">
+                        <input class="field__input js-phone" name="contacts-phone" id="contacts-phone" autocomplete="off"
+                        type="text">
+                        <label class="field__label" for="contacts-phone">Телефон</label>
+                            <span class="field__error-text">Заполнено не корректно</span>
+                    </div>
+                    <div class="field js-material-input">
+                        <textarea class="field__input field__input--textarea" rows="3" name="" id="coop-text" placeholder="Ваше сообщение" autocomplete="off"></textarea>
+                    </div>
+                    <div class="form__submit">
+                      <div class="form__submit-container">
+                            <div class="captcha">
+                                <div class="js-captcha js-lazy-load js-captcha-lazy" data-captcha="Y">
+                                    <div class="g-recaptcha" data-sitekey="6LegxDgiAAAAAPAZdjoyBtxO2BP9EwQ56WgMXTE_"></div>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn--green">
+                                <div class="btn__text">
+                                    Отправить
+                                </div>
+                            </button>
+                        </div>
+                        <div class="checkbox">
+                        <input type="checkbox" name="contacts-politic" class="checkbox__input js-politic js-politic-auto"
+                            id="contacts-politic" checked="">
+                        <label for="contacts-politic" class="checkbox__label">Нажимая кнопку «Отправить», я даю свое
+                            <a href="/politika-konfidentsialnosti/" target="_blank">согласие на обработку моих персональных
+                            данных</a>, в соответствии с Федеральным законом от 27.07.2006 года №152-ФЗ.</label>
+                        </div>
+                    </div>
+              </form>
+            </div>
+        </div>
+    </div>
+</section>
+<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+<script>
+    $(function () {
+       if ($('#contacts-map').length) {
+           var markers = [[  56.846986, 35.888468], [ 56.846786, 35.885468]];
+
+           var data = [
+           {
+               "NAME": "«Петровайзер Софт»",
+               "PROPERTY_ADDRESS_VALUE": "170002, Россия, г. Тверь, ул. Макарова, д. 4, корп. 2",
+               "PROPERTY_PHONE_VALUE":"+7 (4822) 36-00-61",
+               "PROPERTY_MAIL_VALUE":"office@pvsoft.ru",
+               "PROPERTY_TIME_VALUE":"Пн-Пт с 9:00 до 18:00",
+               "ID": 0
+           },
+           {
+               "NAME": "АЗС «Мустанг»",
+               "PROPERTY_ADDRESS_VALUE": "170002, Россия, г. Тверь, ул. Макарова, д. 4, корп. 2",
+               "PROPERTY_PHONE_VALUE":"+7 (4822) 36-00-61",
+               "PROPERTY_MAIL_VALUE":"office@pvsoft.ru",
+               "PROPERTY_TIME_VALUE":"Пн-Пт с 9:00 до 18:00",
+               "ID": 1
+           },
+           ];
+
+
+           var mapHeight = $('#contacts-map').height();
+
+           ymaps.ready(function () {
+
+               var contactsMap = new ymaps.Map("contacts-map", {
+                       center: ['56.846986', '35.888468'],
+                       zoom: 15,
+                       behaviors: ['default'],
+                       controls: []
+                   }),
+                   MyIconContentLayout = ymaps.templateLayoutFactory.createClass(
+                       '<span style="font-weight: 600;font-size: 18px; color: #FFF">{{ properties.geoObjects.length }}</span>'
+                   ),
+
+                   objectManager = new ymaps.ObjectManager({
+                       clusterize: true,
+                       clusterIcons: [
+                       	{
+                       		href: './img/svg/claster-small.svg',
+                       		size: [40, 40],
+                       		offset: [-27.5, -42],
+                       		iconContentOffset: [23, 15],
+                       	},
+                       	{
+                       		href: './img/svg/claster-big.svg',
+                       		size: [55, 55],
+                       		offset: [-27.5, -42],
+                       		iconContentOffset: [25, 25],
+                       	}],
+                       clusterNumbers: [3],
+                       clusterIconContentLayout: MyIconContentLayout
+                   });
+
+
+               var MyBalloonLayout = ymaps.templateLayoutFactory.createClass(
+                   '<div class="popover">' +
+                   '<div class="popover__arrow"></div>' +
+                   '<div class="popover__inner">' +
+                   '<a class="popover__close" href="#">' +
+                   '<svg class="icon icon-close">' +
+                   '<use xlink:href="#icon-close"></use>' +
+                   '</svg>' +
+                   '</a>' +
+                   '$[[options.contentLayout observeSize minWidth=300 maxWidth=480]]' +
+                   '<span class="popover__tail"></span>' +
+                   '</div>' +
+                   '</div>', {
+                       build: function () {
+                           this.constructor.superclass.build.call(this);
+
+                           this._$element = $('.popover', this.getParentElement());
+
+                           this.applyElementOffset();
+
+                           this._$element.find('.popover__close')
+                               .on('click', $.proxy(this.onCloseClick, this));
+                       },
+                       clear: function () {
+                           this._$element.find('.popover__close')
+                               .off('click');
+
+                           this.constructor.superclass.clear.call(this);
+                       },
+                       onSublayoutSizeChange: function () {
+                           MyBalloonLayout.superclass.onSublayoutSizeChange.apply(this, arguments);
+
+                           if (!this._isElement(this._$element)) {
+                               return;
+                           }
+
+                           this.applyElementOffset();
+
+                           this.events.fire('shapechange');
+                       },
+                       applyElementOffset: function () {
+                           this._$element.css({
+                               left: -(this._$element[0].offsetWidth / 3.5),
+                               top: -(this._$element[0].offsetHeight + this._$element.find('.popover__arrow')[0].offsetHeight - 15)
+                           });
+                       },
+                       onCloseClick: function (e) {
+                           e.preventDefault();
+
+                           this.events.fire('userclose');
+                       },
+                       getShape: function () {
+                           if (!this._isElement(this._$element)) {
+                               return MyBalloonLayout.superclass.getShape.call(this);
+                           }
+
+                           var position = this._$element.position();
+
+                           return new ymaps.shape.Rectangle(new ymaps.geometry.pixel.Rectangle([
+                               [position.left, position.top], [
+                                   position.left + this._$element[0].offsetWidth,
+                                   position.top + this._$element[0].offsetHeight + this._$element.find('.popover__arrow')[0].offsetHeight
+                               ]
+                           ]));
+                       },
+                       _isElement: function (element) {
+                           return element && element[0] && element.find('.popover__arrow')[0];
+                       }
+                   });
+
+               var MyBalloonContentLayout = ymaps.templateLayoutFactory.createClass(
+                   '<div class="popover__content">$[properties.balloonContent]</div>'
+               );
+
+               contactsMap.behaviors.disable(['scrollZoom']);
+
+               var collection = {
+                   type: "FeatureCollection",
+                   features: []
+               };
+
+               for (var i = 0; i < markers.length; i++) {
+                   var marker = markers[i];
+                   var item = data[i];
+                   var balloon = `
+                   <div class="ballon">
+                        <div class="ballon__head">
+                           <div class="baloon__head-text">
+                               ${data[i].NAME}
+                           </div>
+                       </div>
+                   <div class="baloon__body">
+                       <div class="baloon__props">
+                           <div style="${data[i].PROPERTY_PHONE_VALUE ? '' : 'display:none'}" class="baloon__line">
+                               <svg class="icon icon-phone"><use xlink:href="#icon-phone"></use></svg>
+                               <a href="${item.PROPERTY_PHONE_VALUE}">${item.PROPERTY_PHONE_VALUE}</a>
+                           </div>
+                           <div style="${data[i].PROPERTY_MAIL_VALUE ? '' : 'display:none'}" class="baloon__line">
+                               <svg class="icon icon-mail"><use xlink:href="#icon-mail"></use></svg>
+                               <a href="${item.PROPERTY_MAIL_VALUE}">${item.PROPERTY_MAIL_VALUE}</a>
+                           </div>
+                           <div style="${data[i].PROPERTY_TIME_VALUE ? '' : 'display:none'}" class="baloon__line">
+                               <svg class="icon icon-time"><use xlink:href="#icon-time"></use></svg>
+                               <span>${item.PROPERTY_TIME_VALUE}</span>
+                           </div>
+                           <div style="${data[i].PROPERTY_ADDRESS_VALUE ? '' : 'display:none'}" class="baloon__line">
+                               <svg class="icon icon-location"><use xlink:href="#icon-location"></use></svg>
+                               <span>${item.PROPERTY_ADDRESS_VALUE}</span>
+                           </div>
+                           </div>
+                       </div>
+                   </div>
+                   `;
+
+                   collection.features.push({
+                       type: 'Feature',
+                       id: i,
+                       geometry: {
+                           type: 'Point',
+                           coordinates: marker
+                       },
+                       properties: {
+                           balloonContent: balloon,
+                           hintContent: item.NAME,
+                           city: item.IBLOCK_SECTION_ID,
+                       },
+                       options: {
+                           balloonLayout: MyBalloonLayout,
+                           balloonContentLayout: MyBalloonContentLayout,
+                           balloonOffset: [90, -15],
+                           iconColor: '#CE6B33',
+                           iconLayout: 'default#imageWithContent',
+                           iconImageHref: './img/svg/metka.svg',
+                           iconImageSize: [58, 70],
+                           iconImageOffset: [-27, -69],
+                           iconContentOffset: [0, 0],
+                           }
+                       }
+                   )
+               }
+               objectManager.add(collection)
+
+               contactsMap.geoObjects.add(objectManager);
+
+               contactsMap.controls.add('zoomControl', {
+                   size: 'small',
+                   float: 'none',
+                   position: {
+                       top: mapHeight / 2 - 30,
+                       right: '45px'
+                   }
+               });
+
+               $('.js-where-list-item').click(function() {
+                let id = +$(this).data('id');
+                let objectState = objectManager.getObjectState(id);
+
+                if (objectState.isClustered) {
+                    contactsMap.setCenter(objectState.cluster.geometry.coordinates, 9)
+                    .then(function () {
+                        objectManager.objects.balloon.open(id);
+                    });
+                } else {
+                    objectManager.objects.balloon.open(id);
+                }
+               });
+
+
+
+               contactsMap.setBounds(contactsMap.geoObjects.getBounds(),
+				          {checkZoomRange:true, zoomMargin:100}).then(function(){ if(contactsMap.getZoom() > 14) contactsMap.setZoom(14);});
+           });
+
+       }
+   });
+   </script>
+@@include('include/footer.html')
